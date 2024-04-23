@@ -9,16 +9,11 @@ const getBooksList = (req, res) => {
 
 
 const getBookDetails = (req, res) => {
-    console.log('getBookDetails called with ID:', req.params.id);
     const userId = req.session.userId;
-    console.log(userId)
     const bookId = req.params.id;
-    console.log(bookId)
 
     const user = User.getAll().find(user => user.id == userId);
     const book = Book.getAll().find(book => book.id == bookId);
-    console.log('All users:', User.getAll()[0].id);
-    console.log('All books:', Book.getAll()[0].id);
     if (!user || !book) {
         return res.status(404).render('not-found', { title: 'Not Found' });
     }
