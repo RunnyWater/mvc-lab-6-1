@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Books</h1>
+    <% if (userId) { %>
+        <ul>
+            <% books.forEach(book => { %>
+                <li><a href="/books/<%= book.id %>"><%= book.title %></a> by <%= book.author %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>Sorry, you cannot access library without login into the system.</p>
+    <% } %>
+    <a href="/user/set">Log in</a>
+</body>
+</html>
