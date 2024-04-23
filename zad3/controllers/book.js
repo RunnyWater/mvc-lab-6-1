@@ -31,9 +31,9 @@ const getBookDetails = (req, res) => {
 const postBookBorrow = (req, res) => {
     const userId = req.session.userId;
     const bookId = req.params.id;
-    const user = User.getAll().find(user => user.id === userId);
-    const book = Book.getAll().find(book => book.id === bookId);
-    
+    const user = User.getAll().find(user => user.id == userId);
+    const book = Book.getAll().find(book => book.id == bookId);
+
     if (!user || !book || !book.available) {
         return res.status(400).render('error', { title: 'Error', message: 'Book is not available for borrowing.' });
     }
@@ -47,8 +47,8 @@ const postBookBorrow = (req, res) => {
 const postBookReturn = (req, res) => {
     const userId = req.session.userId;
     const bookId = req.params.id;
-    const user = User.getAll().find(user => user.id === userId);
-    const book = Book.getAll().find(book => book.id === bookId);
+    const user = User.getAll().find(user => user.id == userId);
+    const book = Book.getAll().find(book => book.id == bookId);
 
     if (!user || !book || book.available) {
         return res.status(400).render('error', { title: 'Error', message: 'Book is not borrowed by you.' });
