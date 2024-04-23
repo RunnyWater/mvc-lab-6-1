@@ -23,10 +23,3 @@ app.use("*", errorRoutes);
 app.listen(3000, () => {
  console.log(`Server is running on http://localhost:3000`);
 });
-
-
-const userRoutes = require('./routes/user');
-const bookRoutes = require('./routes/book');
-
-app.use('/user', userRoutes);
-app.use('/books', bookRoutes);
